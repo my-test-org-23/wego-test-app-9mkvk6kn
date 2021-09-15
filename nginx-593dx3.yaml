@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-593dx3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-593dx3
+  namespace: my-nginx-593dx3
+  labels:
+    name: nginx-593dx3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-593dx3
+  template:
+    metadata:
+      namespace: my-nginx-593dx3
+      labels:
+        name: nginx-593dx3
+    spec:
+      containers:
+      - name: nginx-593dx3
+        image: nginx
+        ports:
+        - containerPort: 80
+
